@@ -12,6 +12,18 @@ class SquadCombat {
         }
     }
 
+    _getArmourStrength(max_armour) {
+        if (max_armour === 225) {
+            return 3;
+        }
+
+        if (max_armour === 660) {
+            return 4;
+        }
+
+        return 0;
+    }
+
     _getColour(quantity, max) {
         const proportion = quantity / max;
 
@@ -61,25 +73,35 @@ class SquadCombat {
 
         if (PardusOptionsUtility.getVariableValue('total_stats_on_combat', true)) {
             const total_header_row = table.insertRow(row_inserts++);
-            const total_stats_row = table.insertRow(row_inserts++);
-
             total_header_row.innerHTML = '<th colspan="4">TOTAL</th>';
-            total_stats_row.insertCell();
 
-            const total_hull_cell = total_stats_row.insertCell();
-            total_hull_cell.innerText = total_hull;
-            total_hull_cell.setAttribute('align', 'right');
-            total_hull_cell.setAttribute('style', this._getColour(Math.round(total_hull), max_hull * 100));
+            if (PardusOptionsUtility.getVariableValue('total_combined_stats', true)) {
+                const total_combined_stats_row = table.insertRow(row_inserts++);
+                total_combined_stats_row.insertCell();
+                total_combined_stats_row.innerText = (total_hull + (total_armour * this._getArmourStrength(max_armour)) + total_shields);
+                total_combined_stats_row.setAttribute('align', 'right');
+                total_combined_stats_row.setAttribute('style', this._getColour((total_hull + (total_armour * this._getArmourStrength(max_armour)) + total_shields), (max_hull + (max_armour * this._getArmourStrength(max_armour)) + max_shields) * 100));               
+            }
 
-            const total_armour_cell = total_stats_row.insertCell();
-            total_armour_cell.innerText = total_armour;
-            total_armour_cell.setAttribute('align', 'right');
-            total_armour_cell.setAttribute('style', this._getColour(Math.round(total_armour), max_armour * 100));
+            if (PardusOptionsUtility.getVariableValue('total_distinct_stats', true)) {
+                const total_distinct_stats_row = table.insertRow(row_inserts++);
+                total_distinct_stats_row.insertCell();
 
-            const total_shields_cell = total_stats_row.insertCell();
-            total_shields_cell.innerText = total_shields;
-            total_shields_cell.setAttribute('align', 'right');
-            total_shields_cell.setAttribute('style', this._getColour(Math.round(total_shields), max_shield * 100));
+                const total_hull_cell = total_distinct_stats_row.insertCell();
+                total_hull_cell.innerText = total_hull;
+                total_hull_cell.setAttribute('align', 'right');
+                total_hull_cell.setAttribute('style', this._getColour(total_hull, max_hull * 100));
+
+                const total_armour_cell = total_distinct_stats_row.insertCell();
+                total_armour_cell.innerText = total_armour;
+                total_armour_cell.setAttribute('align', 'right');
+                total_armour_cell.setAttribute('style', this._getColour(total_armour, max_armour * 100));
+
+                const total_shields_cell = total_distinct_stats_row.insertCell();
+                total_shields_cell.innerText = total_shields;
+                total_shields_cell.setAttribute('align', 'right');
+                total_shields_cell.setAttribute('style', this._getColour(total_shields, max_shield * 100));                
+            }
         }
 
         if (PardusOptionsUtility.getVariableValue('average_stats_on_combat', true)) {
