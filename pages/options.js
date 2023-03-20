@@ -14,30 +14,30 @@ class OptionsPage {
     }
 
     generalOptions(subtab) {
-        const average_stats_on_nav = subtab.addBox({
+        const stats_box = subtab.addBox({
             heading: 'Aggregate statistics',
             description: 'Settings for aggregated statistics about squads on various pages.'
         });
 
-        average_stats_on_nav.addBooleanOption({
+        stats_box.addBooleanOption({
             variable: 'average_stats_on_nav',
             description: 'Enable average stats on nav',
             defaultValue: true
         });
 
-        average_stats_on_combat.addBooleanOption({
+        stats_box.addBooleanOption({
             variable: 'average_stats_on_combat',
             description: 'Enable average stats on nav',
             defaultValue: true
         });
 
-        total_stats_on_nav.addBooleanOption({
+        stats_box.addBooleanOption({
             variable: 'total_stats_on_nav',
             description: 'Enable average stats on nav',
             defaultValue: true
         });
 
-        total_stats_on_combat.addBooleanOption({
+        stats_box.addBooleanOption({
             variable: 'total_stats_on_combat',
             description: 'Enable average stats on nav',
             defaultValue: true
