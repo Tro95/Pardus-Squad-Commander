@@ -11,7 +11,7 @@
 // @grant           GM_getValue
 // @require         https://raw.githubusercontent.com/Tro95/Pardus-Options-Library/v2.6.0/dist/pardus-options-library.js
 // @require         https://raw.githubusercontent.com/Tro95/Pardus-Flight-Computer/v0.1.0/pages/options.js
-// @require         https://raw.githubusercontent.com/Tro95/Pardus-Flight-Computer/v0.1.0/pages/main.js
+// @require         https://raw.githubusercontent.com/Tro95/Pardus-Flight-Computer/v0.1.0/pages/squad_main.js
 // @require         https://raw.githubusercontent.com/Tro95/Pardus-Flight-Computer/v0.1.0/pages/squad_combat.js
 // @downloadURL     https://github.com/Tro95/Pardus-Squad-Commander/raw/main/pardus_squad_commander.user.js
 // @updateURL       https://github.com/Tro95/Pardus-Squad-Commander/raw/main/pardus_squad_commander.meta.js
