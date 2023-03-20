@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name            Pardus Squad Commander
-// @version         0.1.0
+// @version         0.1.1
 // @description     Squad scripts
 // @author          Tro (Artemis)
 // @icon            https://static.pardus.at/img/stdhq/squadrons/fighter_squad_1.png
