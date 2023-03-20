@@ -1,4 +1,4 @@
-/* global PardusOptions, PardusOptionsUtility, colours, mapper_urls_from_route */
+/* global PardusOptions, PardusOptionsUtility */
 
 class OptionsPage {
 

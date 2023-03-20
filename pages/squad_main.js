@@ -1,3 +1,5 @@
+/* global PardusOptions, PardusOptionsUtility */
+
 class SquadMainPage {
 
     constructor() {
@@ -75,10 +77,14 @@ class SquadMainPage {
 
             if (PardusOptionsUtility.getVariableValue('total_combined_stats', true)) {
                 const total_combined_stats_row = table.insertRow(row_inserts++);
-                total_combined_stats_row.insertCell();
-                total_combined_stats_row.innerText = (total_hull + (total_armour * this._getArmourStrength(max_armour)) + total_shields);
-                total_combined_stats_row.setAttribute('align', 'right');
-                total_combined_stats_row.setAttribute('style', this._getColour((total_hull + (total_armour * this._getArmourStrength(max_armour)) + total_shields), (max_hull + (max_armour * this._getArmourStrength(max_armour)) + max_shields) * 100));               
+                const total_health_description_cell = total_combined_stats_row.insertCell();
+                total_health_description_cell.innerText = 'Total health:'
+                total_health_description_cell.setAttribute('colspan', '2');
+                const total_combined_stats_cell = total_combined_stats_row.insertCell();
+                total_combined_stats_cell.innerHTML = '<b>' + (total_hull + (total_armour * this._getArmourStrength(max_armour)) + total_shields) + '</b>';
+                total_combined_stats_cell.setAttribute('align', 'center');
+                total_combined_stats_cell.setAttribute('colspan', '2');
+                total_combined_stats_cell.setAttribute('style', this._getColour((total_hull + (total_armour * this._getArmourStrength(max_armour)) + total_shields), (max_hull + (max_armour * this._getArmourStrength(max_armour)) + max_shield) * 100));               
             }
 
             if (PardusOptionsUtility.getVariableValue('total_distinct_stats', true)) {
@@ -98,7 +104,7 @@ class SquadMainPage {
                 const total_shields_cell = total_distinct_stats_row.insertCell();
                 total_shields_cell.innerText = total_shields;
                 total_shields_cell.setAttribute('align', 'right');
-                total_shields_cell.setAttribute('style', this._getColour(total_shields, max_shield * 100));                
+                total_shields_cell.setAttribute('style', this._getColour(total_shields, max_shield * 100));
             }
         }
 
