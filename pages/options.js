@@ -59,13 +59,13 @@ class OptionsPage {
             description: 'Settings to control statistics shown for the total squads'
         });
 
-        combat_box.addBooleanOption({
+        total_box.addBooleanOption({
             variable: 'total_distinct_stats',
             description: 'Enable distinct totals',
             defaultValue: true
         });
 
-        combat_box.addBooleanOption({
+        total_box.addBooleanOption({
             variable: 'total_combined_stats',
             description: 'Enable combined totals',
             defaultValue: true
